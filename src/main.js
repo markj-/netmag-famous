@@ -12,7 +12,8 @@ define(function(require, exports, module) {
     var context = Engine.createContext();
 
     var modifier = new Modifier({
-        transform: Transform.translate( 100, 100, 0 )
+        align: [ 0.5, 0.5 ],
+        origin: [ 0.5, 0.5 ]
     });
 
     var surface = new Surface({
