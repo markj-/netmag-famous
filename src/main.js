@@ -20,39 +20,17 @@ define(function(require, exports, module) {
         }
     });
 
-    var surface2 = new Surface({
-        content: 'surface2',
-        size: [ 150, 150 ],
-        properties: {
-            color: 'white',
-            backgroundColor: 'red'
-        }
+    var stateModifier = new StateModifier();
+
+    surface1.on( 'click', function() {
+        stateModifier.setTransform(
+            Transform.translate( 100, 300, 0 ),
+            { duration : 1000, curve: Easing.inOutBack },
+            function() {
+                console.log( 'Animation complete' );
+            }
+        );
     });
 
-    var modifier = new Modifier({
-        transform: Transform.translate( 150, 0, 0 )
-    });
-
-    var view = new View();
-
-    surface1.on( 'click', function( e ) {
-        console.log( 'Surface 1 clicked', e );
-    });
-
-    surface2.on( 'click', function( e ) {
-        console.log( 'Surface 2 clicked', e );
-    });
-
-    context.on( 'resize', function() {
-        console.log( 'Context resized' );
-    });
-
-    Engine.on( 'keyup', function( e ) {
-        console.log( 'Keyup event', e );
-    });
-
-    view.add( surface1 );
-    view.add( modifier ).add( surface2 );
-
-    context.add( view );
+    context.add( stateModifier ).add( surface1 );
 });
