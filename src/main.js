@@ -12,7 +12,8 @@ define(function(require, exports, module) {
     var context = Engine.createContext();
 
     var surface = new Surface({
-        content: 'My first surface'
+        content: 'My first surface',
+        size: [ 150, 150 ]
     });
 
     context.add( surface );
