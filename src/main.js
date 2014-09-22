@@ -11,13 +11,8 @@ define(function(require, exports, module) {
 
     var context = Engine.createContext();
 
-    var modifier = new Modifier({
-        align: [ 0.5, 0.5 ],
-        origin: [ 0.5, 0.5 ]
-    });
-
-    var surface = new Surface({
-        content: 'My first surface',
+    var surface1 = new Surface({
+        content: 'surface1 - only affected by modifier1',
         size: [ 150, 150 ],
         properties: {
             color: 'white',
@@ -25,5 +20,28 @@ define(function(require, exports, module) {
         }
     });
 
-    context.add( modifier ).add( surface );
+    var surface2 = new Surface({
+        content: 'surface2 - affected by modifier2 & modifier3',
+        size: [ 150, 150 ],
+        properties: {
+            color: 'white',
+            backgroundColor: 'red'
+        }
+    });
+
+    var modifier1 = new Modifier({
+        transform: Transform.translate( 150, 0, 0 )
+    });
+
+    var modifier2 = new Modifier({
+        align: [ 0.5, 0.5 ],
+        origin: [ 0.5, 0.5 ]
+    });
+
+    var modifier3 = new Modifier({
+        transform: Transform.scale( 1.5, 1.5, 1.5 )
+    });
+
+    context.add( modifier1 ).add( surface1 );
+    context.add( modifier2 ).add( modifier3 ).add( surface2 );
 });
