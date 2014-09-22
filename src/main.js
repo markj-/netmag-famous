@@ -35,6 +35,22 @@ define(function(require, exports, module) {
 
     var view = new View();
 
+    surface1.on( 'click', function( e ) {
+        console.log( 'Surface 1 clicked', e );
+    });
+
+    surface2.on( 'click', function( e ) {
+        console.log( 'Surface 2 clicked', e );
+    });
+
+    context.on( 'resize', function() {
+        console.log( 'Context resized' );
+    });
+
+    Engine.on( 'keyup', function( e ) {
+        console.log( 'Keyup event', e );
+    });
+
     view.add( surface1 );
     view.add( modifier ).add( surface2 );
 
