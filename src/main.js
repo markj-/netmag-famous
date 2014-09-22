@@ -11,6 +11,10 @@ define(function(require, exports, module) {
 
     var context = Engine.createContext();
 
+    var modifier = new Modifier({
+        transform: Transform.translate( 100, 100, 0 )
+    });
+
     var surface = new Surface({
         content: 'My first surface',
         size: [ 150, 150 ],
@@ -20,5 +24,5 @@ define(function(require, exports, module) {
         }
     });
 
-    context.add( surface );
+    context.add( modifier ).add( surface );
 });
