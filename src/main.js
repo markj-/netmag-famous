@@ -9,5 +9,11 @@ define(function(require, exports, module) {
     var Transitionable = require('famous/transitions/Transitionable');
     var WallTransition = require('famous/transitions/WallTransition');
 
-    // your code here
+    var context = Engine.createContext();
+
+    var surface = new Surface({
+        content: 'My first surface'
+    });
+
+    context.add( surface );
 });
