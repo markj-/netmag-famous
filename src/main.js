@@ -13,7 +13,11 @@ define(function(require, exports, module) {
 
     var surface = new Surface({
         content: 'My first surface',
-        size: [ 150, 150 ]
+        size: [ 150, 150 ],
+        properties: {
+            color: 'white',
+            backgroundColor: '#67b2e8'
+        }
     });
 
     context.add( surface );
