@@ -12,7 +12,7 @@ define(function(require, exports, module) {
     var context = Engine.createContext();
 
     var surface1 = new Surface({
-        content: 'surface1 - only affected by modifier1',
+        content: 'surface1',
         size: [ 150, 150 ],
         properties: {
             color: 'white',
@@ -21,7 +21,7 @@ define(function(require, exports, module) {
     });
 
     var surface2 = new Surface({
-        content: 'surface2 - affected by modifier2 & modifier3',
+        content: 'surface2',
         size: [ 150, 150 ],
         properties: {
             color: 'white',
@@ -29,19 +29,14 @@ define(function(require, exports, module) {
         }
     });
 
-    var modifier1 = new Modifier({
+    var modifier = new Modifier({
         transform: Transform.translate( 150, 0, 0 )
     });
 
-    var modifier2 = new Modifier({
-        align: [ 0.5, 0.5 ],
-        origin: [ 0.5, 0.5 ]
-    });
+    var view = new View();
 
-    var modifier3 = new Modifier({
-        transform: Transform.scale( 1.5, 1.5, 1.5 )
-    });
+    view.add( surface1 );
+    view.add( modifier ).add( surface2 );
 
-    context.add( modifier1 ).add( surface1 );
-    context.add( modifier2 ).add( modifier3 ).add( surface2 );
+    context.add( view );
 });
